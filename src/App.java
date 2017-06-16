@@ -5,8 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class App {
+import finiteStateMachine.FiniteStateMachine;
+import finiteStateMachine.State;
+import finiteStateMachine.Transition;
+import utilities.DomParser;
 
+public class App {
+	
+	private static FiniteStateMachine fsm;
+	
 	public static void main(String[] args) 
 	{
 		List<SequenciaDeTeste> sequencias = leitor(args);
@@ -17,9 +24,9 @@ public class App {
 
 	public static List<SequenciaDeTeste> leitor(String[] args)
 	{
-		if(args.length != 1)
+		if(args.length != 2)
 		{
-			System.err.println("Enviar um argumento com nome do arquivo que contem as sequencias de teste");
+			System.err.println("Enviar o primeiro argumento com  arquivo que contem as sequencias de teste e o segundo com a maquina de estados no formato .jff");
 			System.exit(1);
 		}
 		File arq = new File(args[0]);				
@@ -31,7 +38,7 @@ public class App {
 		}
 		catch (Exception e) 
 		{
-			System.err.println("Erro na leitura do arquivo: " + args[0]);
+			System.err.println("Erro na leitura do arquivo das sequencias: " + args[0]);
 			System.exit(1);
 		}		
 		List<SequenciaDeTeste> resposta = new ArrayList<SequenciaDeTeste>();
@@ -46,6 +53,12 @@ public class App {
 		{
 			resposta.add(new SequenciaDeTeste(in.nextLine()));
 		}
+		in.close();
+		
+		//Leitura fa Maquina de estados
+		fsm = new FiniteStateMachine();
+		DomParser.parse(fsm, args[1]);
+		
 		return resposta;
 	}
 	public static String transformar(List<SequenciaDeTeste> sequencias)
@@ -61,9 +74,25 @@ public class App {
 			resposta.append("\t@Test\n");
 			resposta.append("\tpublic static void _" + seq.getNome() + "()\n\t{\n");
 			resposta.append("\t\t--TO DO\n");
-			for(String s : seq.getSequencia())
+			
+			List<String> temp = seq.getSequencia();
+			State atual = fsm.getInitialState();
+			for(int i = 0; i < temp.size(); i++)
 			{
-				resposta.append("\t\tassertEquals(" + "true, " + s + ");\n");
+				String m = temp.get(i);
+				String r = "";
+				//procura nas transicoes a trancisao atual
+				for(Transition tran : fsm.getTransitions())
+				{
+					if(tran.getSourceState().equals(atual) && tran.getInput().equals(m))
+					{
+						atual = tran.getTargetState();
+						r = tran.getOutput();
+						break;
+					}
+				}
+				
+				resposta.append("\t\tassertEquals(" + r + ", " + m + ");\n");
 			}
 			resposta.append("\t}\n\n");
 		}

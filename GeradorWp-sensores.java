@@ -6,48 +6,48 @@ public class TestJunit{
 	public static void _Test_Sequence_1()
 	{
 		--TO DO
-		assertEquals(true, resetH());
-		assertEquals(true, resetH());
+		assertEquals(false, resetH());
+		assertEquals(false, resetH());
 	}
 
 	@Test
 	public static void _Test_Sequence_2()
 	{
 		--TO DO
-		assertEquals(true, setR());
-		assertEquals(true, resetH());
+		assertEquals(ε, setR());
+		assertEquals(false, resetH());
 	}
 
 	@Test
 	public static void _Test_Sequence_3()
 	{
 		--TO DO
-		assertEquals(true, getH());
-		assertEquals(true, resetH());
+		assertEquals(false, getH());
+		assertEquals(false, resetH());
 	}
 
 	@Test
 	public static void _Test_Sequence_4()
 	{
 		--TO DO
-		assertEquals(true, resetAlerta());
-		assertEquals(true, resetH());
+		assertEquals(false, resetAlerta());
+		assertEquals(false, resetH());
 	}
 
 	@Test
 	public static void _Test_Sequence_5()
 	{
 		--TO DO
-		assertEquals(true, getAlerta());
-		assertEquals(true, resetH());
+		assertEquals(false, getAlerta());
+		assertEquals(false, resetH());
 	}
 
 	@Test
 	public static void _Test_Sequence_6()
 	{
 		--TO DO
-		assertEquals(true, setAlerta());
-		assertEquals(true, resetH());
+		assertEquals(false, setAlerta());
+		assertEquals(false, resetH());
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, setH());
+		assertEquals(false, setH());
 		assertEquals(true, resetH());
 	}
 
@@ -82,7 +82,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, setH());
+		assertEquals(false, setH());
 		assertEquals(true, setAlerta());
 	}
 
@@ -92,7 +92,7 @@ public class TestJunit{
 		--TO DO
 		assertEquals(true, setH());
 		assertEquals(true, resetH());
-		assertEquals(true, resetH());
+		assertEquals(false, resetH());
 	}
 
 	@Test
@@ -100,7 +100,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, setR());
+		assertEquals(ε, setR());
 		assertEquals(true, resetH());
 	}
 
@@ -109,7 +109,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, setR());
+		assertEquals(ε, setR());
 		assertEquals(true, setAlerta());
 	}
 
@@ -118,7 +118,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, resetAlerta());
+		assertEquals(false, resetAlerta());
 		assertEquals(true, resetH());
 	}
 
@@ -127,7 +127,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, resetAlerta());
+		assertEquals(false, resetAlerta());
 		assertEquals(true, setAlerta());
 	}
 
@@ -136,7 +136,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, getAlerta());
+		assertEquals(false, getAlerta());
 		assertEquals(true, resetH());
 	}
 
@@ -145,7 +145,7 @@ public class TestJunit{
 	{
 		--TO DO
 		assertEquals(true, setH());
-		assertEquals(true, getAlerta());
+		assertEquals(false, getAlerta());
 		assertEquals(true, setAlerta());
 	}
 
@@ -186,7 +186,7 @@ public class TestJunit{
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
 		assertEquals(true, getH());
-		assertEquals(true, setAlerta());
+		assertEquals(false, setAlerta());
 	}
 
 	@Test
@@ -206,7 +206,7 @@ public class TestJunit{
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
 		assertEquals(true, getAlerta());
-		assertEquals(true, setAlerta());
+		assertEquals(false, setAlerta());
 	}
 
 	@Test
@@ -215,7 +215,7 @@ public class TestJunit{
 		--TO DO
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
-		assertEquals(true, setH());
+		assertEquals(false, setH());
 		assertEquals(true, resetH());
 	}
 
@@ -225,8 +225,8 @@ public class TestJunit{
 		--TO DO
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
-		assertEquals(true, setH());
-		assertEquals(true, setAlerta());
+		assertEquals(false, setH());
+		assertEquals(false, setAlerta());
 	}
 
 	@Test
@@ -235,7 +235,7 @@ public class TestJunit{
 		--TO DO
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
-		assertEquals(true, setR());
+		assertEquals(ε, setR());
 		assertEquals(true, resetH());
 	}
 
@@ -245,8 +245,8 @@ public class TestJunit{
 		--TO DO
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
-		assertEquals(true, setR());
-		assertEquals(true, setAlerta());
+		assertEquals(ε, setR());
+		assertEquals(false, setAlerta());
 	}
 
 	@Test
@@ -256,7 +256,7 @@ public class TestJunit{
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
 		assertEquals(true, resetH());
-		assertEquals(true, resetH());
+		assertEquals(false, resetH());
 	}
 
 	@Test
@@ -265,7 +265,7 @@ public class TestJunit{
 		--TO DO
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
-		assertEquals(true, setAlerta());
+		assertEquals(false, setAlerta());
 		assertEquals(true, resetH());
 	}
 
@@ -275,8 +275,8 @@ public class TestJunit{
 		--TO DO
 		assertEquals(true, setH());
 		assertEquals(true, setAlerta());
-		assertEquals(true, setAlerta());
-		assertEquals(true, setAlerta());
+		assertEquals(false, setAlerta());
+		assertEquals(false, setAlerta());
 	}
 
 }

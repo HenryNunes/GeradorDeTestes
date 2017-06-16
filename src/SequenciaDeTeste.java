@@ -27,5 +27,4 @@ public class SequenciaDeTeste {
 		return this.sequencia.get(posicao);
 	}
 	
-	
 }
