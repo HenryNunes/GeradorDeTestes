@@ -64,22 +64,33 @@ public class App {
 	public static String transformar(List<SequenciaDeTeste> sequencias)
 	{
 		StringBuilder resposta = new StringBuilder();
-		resposta.append("import org.junit.Test;\n");
-		resposta.append("import static org.junit.Assert.assertEquals;\n");
+		resposta.append("import org.junit.Test;\r\n");
+		resposta.append("import static org.junit.Assert.assertEquals;\r\n");
 		resposta.append("\n");
 		
-		resposta.append("public class TestJunit{\n");
+		resposta.append("public class TestJunit{\r\n");
+		resposta.append("\t@Before\r\n");
+		resposta.append("\tpublic static void _start()\r\n\t{\r\n");
+		resposta.append("\t\t//--TO DO\r\n");
+		resposta.append("\t}\r\n");
+		
 		for(SequenciaDeTeste seq : sequencias)
 		{
-			resposta.append("\t@Test\n");
-			resposta.append("\tpublic static void _" + seq.getNome() + "()\n\t{\n");
-			resposta.append("\t\t--TO DO\n");
+			resposta.append("\t@Test\r\n");
+			resposta.append("\tpublic static void _" + seq.getNome() + "()\r\n\t{\r\n");
+			resposta.append("\t\t//--TO DO\r\n");
 			
 			List<String> temp = seq.getSequencia();
 			State atual = fsm.getInitialState();
 			for(int i = 0; i < temp.size(); i++)
 			{
 				String m = temp.get(i);
+				
+				if(i == temp.size()-1)
+				{
+					//System.out.println("Erro trans " + seq.getNome() + ": " + m);
+					//System.out.println(temp);
+				}
 				String r = "";
 				//procura nas transicoes a trancisao atual
 				for(Transition tran : fsm.getTransitions())
@@ -88,13 +99,25 @@ public class App {
 					{
 						atual = tran.getTargetState();
 						r = tran.getOutput();
+						if(r.equals(""))
+						{
+							//System.out.println("Erro valor: " + r);
+						}
 						break;
 					}
 				}
 				
-				resposta.append("\t\tassertEquals(" + r + ", " + m + ");\n");
+				if(!r.equals(FiniteStateMachine.EPSILON))
+				{
+					
+					resposta.append("\t\tassertEquals(" + r + ", " + m + ");\r\n");
+				}
+				else
+				{
+					resposta.append("\t\t" + m + ";\r\n");
+				}
 			}
-			resposta.append("\t}\n\n");
+			resposta.append("\t}\r\n\r\n");
 		}
 		resposta.append("}");
 		return resposta.toString();
